@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify # type: ignore
 from flask_cors import CORS
 import pymysql
 
@@ -13,7 +13,7 @@ def get_connection():
         password=os.environ["MYSQLPASSWORD"],
         database=os.environ["MYSQLDATABASE"],
         port=int(os.environ["MYSQLPORT"]),
-        cursorclass=pymysql.cursors.DictCursor,
+        cursorclass=pymysql.cursors.DictCursor, # type: ignore
         autocommit=False
     )
 

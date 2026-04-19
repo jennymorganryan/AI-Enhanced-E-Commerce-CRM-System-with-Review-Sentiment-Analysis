@@ -1,15 +1,19 @@
 import pymysql
 import re
 import hashlib
+import os
+from pymysql.cursors import DictCursor
 
 connection = pymysql.connect(
-    host="localhost",
-    user="user",
-    password="password27",
-    database="Jenny_Morgan_CRM",
-    cursorclass=pymysql.cursors.DictCursor
+    host=os.environ["MYSQLHOST"],
+    user=os.environ["MYSQLUSER"],
+    password=os.environ["MYSQLPASSWORD"],
+    database=os.environ["MYSQLDATABASE"],
+    port=int(os.environ["MYSQLPORT"]),
+    cursorclass=DictCursor
 )
 
+#project logic 
 pattern = r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
 
 
